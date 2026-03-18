@@ -4,6 +4,7 @@ import com.aydog4nn.controller.IRestAuthenticationController;
 import com.aydog4nn.controller.RestBaseController;
 import com.aydog4nn.controller.RootEntity;
 import com.aydog4nn.dto.AuthRequest;
+import com.aydog4nn.dto.AuthResponse;
 import com.aydog4nn.dto.DtoUser;
 import com.aydog4nn.service.IAuthenticationService;
 import jakarta.validation.Valid;
@@ -18,5 +19,11 @@ public class RestAuthenticationControllerImpl extends RestBaseController impleme
     @Override
     public RootEntity<DtoUser> register(@Valid @RequestBody AuthRequest authRequest) {
         return ok(authenticationService.register(authRequest));
+    }
+
+    @PostMapping("/authenticate")
+    @Override
+    public RootEntity<AuthResponse> authenticate(@Valid @RequestBody AuthRequest authRequest) {
+        return ok(authenticationService.authenticate(authRequest));
     }
 }
