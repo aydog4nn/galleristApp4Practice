@@ -3,6 +3,7 @@ package com.aydog4nn.service.impl;
 import com.aydog4nn.dto.AuthRequest;
 import com.aydog4nn.dto.AuthResponse;
 import com.aydog4nn.dto.DtoUser;
+import com.aydog4nn.dto.RefreshTokenRequest;
 import com.aydog4nn.exception.BaseException;
 import com.aydog4nn.exception.ErrorMessage;
 import com.aydog4nn.exception.MessageType;
@@ -89,5 +90,28 @@ public class AuthenticationServiceImpl implements IAuthenticationService {
         catch (Exception e) {
             throw new BaseException(new ErrorMessage(e.getMessage(), MessageType.USERNAME_OR_PASSWORD_INVALID));
         }
+    }
+
+    public boolean isValidRefreshTpken(Date expiredDate){
+        return new Date().before(expiredDate);
+    }
+
+    @Override
+    public AuthResponse refreshToken(RefreshTokenRequest refreshTokenRequest) {
+       Optional<RefreshToken> optionalRefreshToken =  refreshTokenRepository.findByRefreshToken(refreshTokenRequest.getRefreshToken());
+       if (optionalRefreshToken.isEmpty()){
+           throw new BaseException(new ErrorMessage(refreshTokenRequest.getRefreshToken(), MessageType.REFRESH_TOKEN_NOT_FOUND));
+       }
+
+       if (isValidRefreshTpken(optionalRefreshToken.get().getExpiredDate())){
+           throw new BaseException(new ErrorMessage(refreshTokenRequest.getRefreshToken(), MessageType.REFRESH_TOKEN_EXPIRED));
+       }
+
+       User user = optionalRefreshToken.get().getUser();
+       String accessToken = jwtService.generateToken(user);
+       RefreshToken savedRefreshToken =  refreshTokenRepository.save(createRefreshToken(user));
+
+
+       return new AuthResponse(accessToken,savedRefreshToken.getRefreshToken());
     }
 }
