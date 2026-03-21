@@ -4,7 +4,6 @@ import com.aydog4nn.controller.IRestCustomerController;
 import com.aydog4nn.controller.RootEntity;
 import com.aydog4nn.dto.DtoCustomer;
 import com.aydog4nn.dto.DtoCustomerIU;
-import com.aydog4nn.model.Customer;
 import com.aydog4nn.service.ICustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
