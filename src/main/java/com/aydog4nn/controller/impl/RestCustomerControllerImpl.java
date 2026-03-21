@@ -1,6 +1,7 @@
 package com.aydog4nn.controller.impl;
 
 import com.aydog4nn.controller.IRestCustomerController;
+import com.aydog4nn.controller.RestBaseController;
 import com.aydog4nn.controller.RootEntity;
 import com.aydog4nn.dto.DtoCustomer;
 import com.aydog4nn.dto.DtoCustomerIU;
@@ -16,7 +17,7 @@ import static com.aydog4nn.controller.RootEntity.ok;
 
 @RequestMapping("/rest/api/customer")
 @RestController
-public class RestCustomerControllerImpl implements IRestCustomerController {
+public class RestCustomerControllerImpl extends RestBaseController implements IRestCustomerController {
 
     @Autowired
     private ICustomerService customerService;
