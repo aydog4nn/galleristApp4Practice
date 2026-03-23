@@ -2,6 +2,7 @@ package com.aydog4nn.config;
 
 import com.aydog4nn.jwt.JWTAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -25,7 +26,6 @@ public class SecurityConfig {
 
     @Autowired
     private AuthenticationProvider authenticationProvider;
-
     @Autowired
     private JWTAuthenticationFilter jwtAuthenticationFilter;
 
@@ -34,6 +34,7 @@ public class SecurityConfig {
 
     // added-refresh-token
 
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http){
         http.
                 csrf(AbstractHttpConfigurer::disable).

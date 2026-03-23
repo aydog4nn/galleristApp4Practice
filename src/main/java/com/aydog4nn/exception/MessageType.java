@@ -12,7 +12,9 @@ public enum MessageType {
     USERNAME_OR_PASSWORD_INVALID("1007","Kullanıcı adı ya da şifre hatalı "),
     REFRESH_TOKEN_NOT_FOUND("1008","Refresh token bulunamadı!"),
     REFRESH_TOKEN_EXPIRED("1009","Refresh tokenın süresi doldu!"),
-    CURRENCY_RATE_IS_OCCURED("1010","Döviz kuru alınamadı!");
+    CURRENCY_RATE_IS_OCCURED("1010","Döviz kuru alınamadı!"),
+    CUSTOMER_AMOUNT_IS_NOT_ENOUGH("1001","Müşterinin parası yeterli değildir!"),
+    CAR_STATUS_IS_ALREADY_SALED("1011","Araba zaten satılmış");
 
 
     private String code;

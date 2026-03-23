@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rest/api/currency-rates")
+@RequestMapping("/rest/api/")
 public class RestCurrencyRatesControllerImpl extends RestBaseController implements IRestCurrencyRatesController {
 
 
     @Autowired
     private ICurrencyRatesService currencyRatesService;
 
-    @GetMapping("/")
+    @GetMapping("/currency-rates")
     @Override
     public RootEntity<CurrencyRatesResponse> getCurrencyRates(@RequestParam("startDate") String startDate,@RequestParam("endDate") String endDate) {
         return ok(currencyRatesService.getCurrencyRates(startDate,endDate));
