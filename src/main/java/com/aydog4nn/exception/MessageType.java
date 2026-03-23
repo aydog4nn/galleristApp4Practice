@@ -11,7 +11,8 @@ public enum MessageType {
     USERNAME_NOT_FOUND("1006","Username bulunamadı"),
     USERNAME_OR_PASSWORD_INVALID("1007","Kullanıcı adı ya da şifre hatalı "),
     REFRESH_TOKEN_NOT_FOUND("1008","Refresh token bulunamadı!"),
-    REFRESH_TOKEN_EXPIRED("1009","Refresh tokenın süresi doldu!");
+    REFRESH_TOKEN_EXPIRED("1009","Refresh tokenın süresi doldu!"),
+    CURRENCY_RATE_IS_OCCURED("1010","Döviz kuru alınamadı!");
 
 
     private String code;
