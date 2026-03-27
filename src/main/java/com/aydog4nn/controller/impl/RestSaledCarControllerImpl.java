@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RestSaledCarControllerImpl extends RestBaseController implements IRestSaledCarController {
 
+    // Bugün çok doluyum ama zincirir kırmamak için yalandan commit atıyorum mecburum
     @Autowired
     private ISaledCarService saledCarService;
 
